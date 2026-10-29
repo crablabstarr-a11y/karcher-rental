@@ -101,7 +101,7 @@ var BOOKINGS = [
   {start: "2026-10-31T11:00", end: "2026-11-01T11:00"},
   {start: "2026-11-03T11:00", end: "2026-11-04T11:00"}
 ];
-var UPDATED = "2026-10-29";
+var UPDATED = "2026-10-29T14:25"; /* Moscow time, same as BOOKINGS */
 var MONTHS_AHEAD = 3;
 
 (function(){
@@ -169,8 +169,8 @@ var MONTHS_AHEAD = 3;
     if (list.children.length) box.appendChild(list);
     root.appendChild(box);
   }
-  var u = new Date(UPDATED+"T00:00:00");
-  document.getElementById("updated").textContent = "Обновлено " + u.toLocaleDateString("ru-RU",{day:"numeric",month:"long"}) + ".";
+  var u = new Date(UPDATED+":00+03:00");
+  document.getElementById("updated").textContent = "Обновлено " + u.toLocaleDateString("ru-RU",{day:"numeric",month:"long",timeZone:"Europe/Moscow"}) + ", " + hm(u) + " МСК.";
 })();
 </script>
 
