@@ -49,7 +49,7 @@ h1{font-family:var(--display);font-weight:600;font-size:clamp(26px,5.5vw,38px);l
 .months{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .month{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;min-width:0}
 .month h2{font-family:var(--display);font-weight:500;font-size:17px;margin:0 0 10px;text-transform:capitalize}
-.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
 .wd{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:center;padding-bottom:2px}
 .d{aspect-ratio:1;max-width:100%;border-radius:8px;display:grid;place-items:center;font-size:14px;font-variant-numeric:tabular-nums;position:relative}
 .d.free{background:var(--free);color:var(--free-fg);font-weight:500}
@@ -152,7 +152,7 @@ var MONTHS_AHEAD = 3;
       else if (st === "busy") { c.className = "d busy"; c.setAttribute("aria-label", label+": занято"); c.title = "Занято"; }
       else if (st === "free") { c.className = "d free"; c.setAttribute("aria-label", label+": свободно"); }
       else { c.className = "d part"; c.setAttribute("aria-label", label+": занято "+st); c.title = "Занято "+st;
-        var t = document.createElement("small"); t.textContent = st; c.appendChild(t); }
+        var t = document.createElement("small"); t.textContent = st.replace(/:00(?!\d)/g, ""); c.appendChild(t); }
       if (k === tk) c.classList.add("today");
       g.appendChild(c);
     }
